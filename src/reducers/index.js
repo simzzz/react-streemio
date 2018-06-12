@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import RowsListReducer from './reducer_rows_list';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  rows: RowsListReducer
 });
 
 export default rootReducer;
