@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import Item from '../components/item';
+import Row from '../components/row';
 
+// This class is a container because it has direct connection to the redux state
 class RowsList extends Component {
-    renderThumbnail(items) {
+    // For each item renders its picture and name
+    // TODO: Use the Item component
+    renderThumbnailAndTitle(items) {
         return items.map((item) => {
             return (
                 <div>
@@ -13,6 +18,9 @@ class RowsList extends Component {
         })
     }
 
+    // Returns array so we can directly call it inside our <ul> in render 
+    // We can access rows thanks to applying the redux state to this container
+    // TODO: Use the Row component
     renderList() {
         return this.props.rows.map((row) => {
             return (

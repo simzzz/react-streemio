@@ -1,3 +1,4 @@
+//returns only some dummy data for now
 export default function() {
     return [
         {
