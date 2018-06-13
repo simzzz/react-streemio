@@ -7,7 +7,7 @@ class Row extends Component {
     renderList() {
         return this.props.rows.map((row) => {
             return (
-                <div key={row.type} classNameName="row"> 
+                <div key={row.type} className="row"> 
                     <div className="jumbotron jumbotron-fluid">
                         <div className="container">
                             <h1 className="display-4">{row.type}</h1>
