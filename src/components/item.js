@@ -5,8 +5,8 @@ class Item extends Component {
     renderThumbnailAndTitle(items) {
         return items.map((item) => {
             return (
-                <div>
-                    <img src={item.thumbnail} />
+                <div class="col-sm-4">
+                    <img src={item.thumbnail} height="240px" />
                     <div>{item.name}</div>
                 </div>
             );
