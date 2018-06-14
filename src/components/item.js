@@ -5,9 +5,13 @@ class Item extends Component {
     renderThumbnailAndTitle(items) {
         return items.map((item) => {
             return (
-                <div key={item.name} className="col-sm-4">
-                    <img src={item.thumbnail} height="240px" />
-                    <div>{item.name}</div>
+                <div className="col-sm-4">
+                    <div className="card">
+                        <img className="card-img-top" src={item.poster} alt="Card image cap" />
+                        <div className="card-body">
+                            <h4 className="card-title">{item.name}</h4>
+                        </div>
+                    </div>
                 </div>
             );
         });
