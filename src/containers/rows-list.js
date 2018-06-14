@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Row from '../components/row';
-import { bindActionCreators } from '../../../../../../AppData/Local/Microsoft/TypeScript/2.6/node_modules/redux';
+import { bindActionCreators } from 'redux';
 import { getResults } from '../actions/index';
 
 // This class is a container because it has direct connection to the redux state
@@ -17,7 +17,6 @@ class RowsList extends Component {
             )
         }
         return (
-
             <ul>
                 <Row rows={this.props.rows.data} />
             </ul>

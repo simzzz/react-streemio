@@ -10,14 +10,17 @@ class Row extends Component {
             return <p>Loading...</p>;
         }
         return this.props.rows.map((row) => { 
-            console.log(row)
             return (
-                <div key={row.addon.manifest.id} className="row"> 
+                <div key={row.addon.manifest.id} className="single-row"> 
                     <div className="jumbotron jumbotron-fluid">
-                        <div className="container">
+                        <div className="container items-group row-container">
                             <h1 className="display-4">{row.addon.manifest.name}</h1>
                             <p className="lead">{row.addon.manifest.description}</p>
-                            {/* <Item items={[row.items]} /> */}
+                            <a href="#" className="carousel-control-prev"></a>
+                            <div className="row">
+                                <Item items={row.response.metas} />
+                            </div>
+                            <a href="#" className="carousel-control-next"></a>                            
                         </div>
                     </div>                                       
                 </div>

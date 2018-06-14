@@ -1,3 +1,35 @@
 body {
     text-align: center;
 }
+
+img {
+    max-width: 60%;
+}
+
+.card {
+    height: 400px;
+}
+
+.items-group > .row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.items-group > .row > .col-sm-4 {
+    display: inline-block;
+    float: none;
+}
+
+.single-row {
+    max-height: 800px;
+}
+
+.card {
+    overflow: hidden;
+}
+
+.card-text {
+    overflow-x: hidden; 
+    text-overflow: ellipsis;
+    word-wrap: break-word;     
+    max-width: 100%;
+}
