@@ -20,8 +20,6 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/redux-promise": "^0.5.28",
     "axios": "^0.18.0",
     "babel-preset-stage-1": "^6.1.18",
     "body-parser": "^1.18.3",
@@ -32,6 +30,8 @@
     "react-redux": "5.0.7",
     "redux": "4.0.0",
     "redux-promise": "^0.6.0",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
     "stremio-addon-client": "^1.5.2",
     "stremio-aggregators": "^1.4.1",
     "stremio-official-addons": "^1.1.1"

@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Item from './item';
 
 class Row extends Component {
+    constructor(props) {
+        super(props);
+        this.id = 0;
+    }
 
     // Returns array so we can directly call it inside our <ul> in render 
     // We can access rows thanks to applying the redux state to the RowsList container and passing the rows here
@@ -10,8 +14,9 @@ class Row extends Component {
             return <p>Loading...</p>;
         }
         return this.props.rows.map((row) => { 
+            let id 
             return (
-                <div key={row.addon.manifest.id} className="single-row"> 
+                <div key={row.addon.manifest.id + this.id++} className="single-row"> 
                     <div className="jumbotron jumbotron-fluid">
                         <div className="container items-group row-container">
                             <h1 className="display-4">{row.addon.manifest.name}</h1>

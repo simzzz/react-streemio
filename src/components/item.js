@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { isNull } from 'util';
 
+// TODO: Make the images for only the active 3 movies/shows to be shown
 class Item extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     getFavorites() {
         let favorites = JSON.parse(localStorage.getItem('favorites'));
         if (isNull(favorites)) {
@@ -60,18 +57,17 @@ class Item extends Component {
             return <div></div>
         }
         return (
-        <span class="checkmark">
-            <div class="checkmark_stem"></div>
-            <div class="checkmark_kick"></div>
+        <span className="checkmark">
+            <div className="checkmark_stem"></div>
+            <div className="checkmark_kick"></div>
         </span>
         )
     }
 
-    // For each item renders its picture and name
-    renderThumbnailAndTitle(items) {
-        return items.map((item) => {
+    render() {
+        return this.props.items.map((item) => {
             return (
-                <div className="col-sm-4">
+                <div key={item.id} className="col-sm-4">
                     <div className="card">
                         <img onClick={() => {this.togglefavorite(item.id)}} className="card-img-top" src={item.poster} alt="Card image cap" />
                         <div className="image-overlay">
@@ -84,12 +80,6 @@ class Item extends Component {
                 </div>
             );
         });
-    }
-
-    render() {
-        return (
-            this.renderThumbnailAndTitle(this.props.items)
-        );
     }
 };
 

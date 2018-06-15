@@ -28,13 +28,10 @@ aggr.run()
 aggr.evs.on('updated', () => {
     results = [];
     aggr.results.forEach(function(result) {
-
         // each object in result.response.metas is an item that you have to display
         if (result.response && result.response.metas) {
             results.push(result)
         }
-
-
     })
 })
 
