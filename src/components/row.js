@@ -45,9 +45,9 @@ class Row extends Component {
                             {this.renderItems()}
                         </div>
                     </div>
-                    <span onClick={() => this.prevPage()} className="btn btn-primary previous-button">Previous</span>
-                    <p> Page {this.state.page}/{this.maxPages}</p>
-                    <span onClick={() => this.nextPage()} className="btn btn-primary next-button">Next</span>
+                    <button disabled={this.state.page === 1} onClick={() => this.prevPage()} className="btn btn-primary previous-button">Previous</button>
+                    <button disabled={this.state.page === this.maxPages} onClick={() => this.nextPage()} className="btn btn-primary next-button">Next</button>
+                    <p> Page {this.state.page}/{this.maxPages}</p>                
                 </div>                                       
             </div>
         );
