@@ -3,6 +3,10 @@ import { isNull } from 'util';
 
 // TODO: Make the images for only the active 3 movies/shows to be shown
 class Item extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     getFavorites() {
         let favorites = JSON.parse(localStorage.getItem('favorites'));
         if (isNull(favorites)) {
@@ -65,21 +69,19 @@ class Item extends Component {
     }
 
     render() {
-        return this.props.items.map((item) => {
-            return (
-                <div key={item.id} className="col-sm-4">
-                    <div className="card">
-                        <img onClick={() => {this.togglefavorite(item.id)}} className="card-img-top" src={item.poster} alt="Card image cap" />
-                        <div className="image-overlay">
-                            {this.renderCheckbox(item.id)}
-                        </div>
-                        <div className="card-body">
-                            <h4 className="card-title">{item.name.replace('&#39;', '\'')}</h4>
-                        </div>
+        return (
+            <div className="col-sm-4">
+                <div className="card">
+                        <img onClick={() => {this.togglefavorite(this.props.item.id)}} className="card-img-top" src={this.props.item.poster} alt="Card image cap" />
+                    <div className="image-overlay">
+                        {this.renderCheckbox(this.props.item.id)}
+                    </div>
+                    <div className="card-body">
+                        <h4 className="card-title">{this.props.item.name.replace('&#39;', '\'')}</h4>
                     </div>
                 </div>
-            );
-        });
+            </div>
+        );
     }
 };
 

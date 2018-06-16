@@ -23,15 +23,16 @@ class RowsList extends Component {
             this.props.getResults();
         }, seconds * 1000)
     }
+
     render() {
-        if (!this.props.rows) {
+        if (!this.props.rows.data) {
             return (
                 <p> Loading... </p>
             )
         }
         return (
             <ul>
-                <Row rows={this.props.rows.data} />
+                {this.props.rows.data.map((row, i) => <Row key={i} row={row} />)}
             </ul>
         );
     }

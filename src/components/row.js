@@ -5,38 +5,31 @@ class Row extends Component {
     constructor(props) {
         super(props);
         this.id = 0;
+        this.item = this.props.row.addon.manifest;
     }
 
-    // Returns array so we can directly call it inside our <ul> in render 
-    // We can access rows thanks to applying the redux state to the RowsList container and passing the rows here
-    renderList() {
-        if (!this.props.rows) {
-            return <p>Loading...</p>;
-        }
-        return this.props.rows.map((row) => { 
-            let id 
-            return (
-                <div key={row.addon.manifest.id + this.id++} className="single-row"> 
-                    <div className="jumbotron jumbotron-fluid">
-                        <div className="container items-group row-container">
-                            <h1 className="display-4">{row.addon.manifest.name}</h1>
-                            <p className="lead">{row.addon.manifest.description}</p>
-                            <a href="#" className="carousel-control-prev"></a>
-                            <div className="row">
-                                <Item items={row.response.metas} />
-                            </div>
-                            <a href="#" className="carousel-control-next"></a>                            
-                        </div>
-                    </div>                                       
-                </div>
-            );
-        });
-        
+    renderItems() {
+        return this.props.row.response.metas.map((item, i) => {
+            let key = item.id;
+            key ? key += i : key = i;
+            return <Item key={key} item={item} />
+        })
+
     }
 
     render() {
         return (
-            this.renderList()
+            <div key={this.item.id + this.id++} className="single-row"> 
+                <div className="jumbotron jumbotron-fluid">
+                    <div className="container items-group row-container">
+                        <h1 className="display-4">{this.item.name}</h1>
+                        <p className="lead">{this.item.description}</p>
+                        <div className="row">
+                            {this.renderItems()}
+                        </div>
+                    </div>
+                </div>                                       
+            </div>
         );
     }
 };
