@@ -6,10 +6,27 @@ class Row extends Component {
         super(props);
         this.id = 0;
         this.row = this.props.row.addon.manifest;
+        this.state = {startingIndex: 0, page: 1};
+        this.itemsPerPage = 3;
+        this.maxPages = Math.ceil(this.props.row.response.metas.length / this.itemsPerPage);
+    }
+
+    nextPage() {
+        this.setState({
+            startingIndex: this.state.startingIndex + 3,
+            page: this.state.page + 1
+        })
+    }
+
+    prevPage() {        
+        this.setState({
+            startingIndex: this.state.startingIndex - 3,
+            page: this.state.page - 1
+        })
     }
 
     renderItems() {
-        return this.props.row.response.metas.map((item, i) => {
+        return this.props.row.response.metas.slice(this.state.startingIndex, this.state.startingIndex + this.itemsPerPage).map((item, i) => {
             let key = item.id;
             key ? key += i : key = i;
             return <Item key={key} item={item} />
@@ -28,6 +45,9 @@ class Row extends Component {
                             {this.renderItems()}
                         </div>
                     </div>
+                    <span onClick={() => this.prevPage()} className="btn btn-primary previous-button">Previous</span>
+                    <p> Page {this.state.page}/{this.maxPages}</p>
+                    <span onClick={() => this.nextPage()} className="btn btn-primary next-button">Next</span>
                 </div>                                       
             </div>
         );

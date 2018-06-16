@@ -10,19 +10,19 @@ class RowsList extends Component {
         super(props);
         this.props.getResults();
 
-        this.updateResults(10);
+        // this.updateResults(10);
     }
 
-    updateResults(seconds) {
-        let interval;
+    // updateResults(seconds) {
+    //     let interval;
 
-        if (interval) {
-            clearInterval(interval)
-        }
-        interval = setInterval(() => {
-            this.props.getResults();
-        }, seconds * 1000)
-    }
+    //     if (interval) {
+    //         clearInterval(interval)
+    //     }
+    //     interval = setInterval(() => {
+    //         this.props.getResults();
+    //     }, seconds * 1000)
+    // }
 
     render() {
         if (!this.props.rows.data) {
