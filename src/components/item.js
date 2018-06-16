@@ -72,7 +72,7 @@ class Item extends Component {
         return (
             <div className="col-sm-4">
                 <div className="card">
-                        <img onClick={() => {this.togglefavorite(this.props.item.id)}} className="card-img-top" src={this.props.item.poster} alt="Card image cap" />
+                    <img onClick={() => {this.togglefavorite(this.props.item.id)}} className="card-img-top" src={this.props.item.poster} alt="Card image cap" />
                     <div className="image-overlay">
                         {this.renderCheckbox(this.props.item.id)}
                     </div>

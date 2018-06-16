@@ -5,7 +5,7 @@ class Row extends Component {
     constructor(props) {
         super(props);
         this.id = 0;
-        this.item = this.props.row.addon.manifest;
+        this.row = this.props.row.addon.manifest;
     }
 
     renderItems() {
@@ -19,11 +19,11 @@ class Row extends Component {
 
     render() {
         return (
-            <div key={this.item.id + this.id++} className="single-row"> 
+            <div key={this.row.id + this.id++} className="single-row"> 
                 <div className="jumbotron jumbotron-fluid">
                     <div className="container items-group row-container">
-                        <h1 className="display-4">{this.item.name}</h1>
-                        <p className="lead">{this.item.description}</p>
+                        <h1 className="display-4">{this.row.name}</h1>
+                        <p className="lead">{this.row.description}</p>
                         <div className="row">
                             {this.renderItems()}
                         </div>
