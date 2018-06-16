@@ -74,7 +74,7 @@ class Item extends Component {
                             {this.renderCheckbox(item.id)}
                         </div>
                         <div className="card-body">
-                            <h4 className="card-title">{item.name}</h4>
+                            <h4 className="card-title">{item.name.replace('&#39;', '\'')}</h4>
                         </div>
                     </div>
                 </div>
