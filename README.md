@@ -14,9 +14,11 @@ Evaluation Assignment 2018
 ..* We use the `react-redux` library to connect the `rows-list` component to redux and thus promote it to a container.
 
 ..*  The flow of the app is the following:
-1. When the `rows-list` component is loaded it calls the action creator function `getResults()`.
+1. When the `rows-list` component is loaded it calls the action creator function `getResults()` each time the server socket emits that the rows are updated.
 
-2. The function returns an action, however the payload of the action is a promise, because it is an asynchronous GET request to the server. So we use the `redux-promise` library to resolve it before it reaches the reducer.
+~~2. The function returns an action, however the payload of the action is a promise, because it is an asynchronous GET request to the server. So we use the `redux-promise` library to resolve it before it reaches the reducer.~~
+
+2. The function returns an action. The payload is no longer a promise since socket is implemented, so it gets passed as a payload normally.
 
 3. Our reducer catches the action type and returns the data from the server, which is now an object and not a promise.
 
