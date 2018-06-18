@@ -14,8 +14,8 @@ const socket = io.connect(SOCKET_URL);
 class RowsList extends Component {
     constructor(props) {
         super(props);
-        // this.props.getResults();
 
+        // Each time rows are updated, we will call our action creator
         socket.on('rows', (rows) => {
             this.props.getResults(rows);
         })
