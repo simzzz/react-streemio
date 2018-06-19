@@ -3,11 +3,11 @@ const router = express.Router();
 const client = require('stremio-addon-client');
 const officialAddons = require('stremio-official-addons');
 const aggregators = require('stremio-aggregators');
+let results = [];
 
 module.exports = function(server, io) {
     const col = new client.AddonCollection()
 
-    let results = [];
     
     // Load official add-ons
     col.load(officialAddons)
@@ -23,7 +23,7 @@ module.exports = function(server, io) {
 
         // We emit once so that there are results when the user connects.
         io.emit('rows', results);        
-
+        
         aggr.evs.on('updated', () => {
             console.log('Rows were updated!');
             if (results) {
