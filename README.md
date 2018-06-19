@@ -4,7 +4,7 @@ Evaluation Assignment 2018
 1. `npm start`
 2. Open `localhost:8080` in the browser
 3. `node server`
-3.1 Sometimes no rows are loaded so we need to refresh the page a few times.
+4. (optional) Sometimes no rows are loaded so we need to refresh the page a few times.
 
 # How the project works
 * We have a server running on port 3000, which is ran using `node server`. It is here only to send the data from the Stremio client.
