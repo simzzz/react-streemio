@@ -26,7 +26,9 @@ module.exports = function(server, io) {
 
         aggr.evs.on('updated', () => {
             console.log('Rows were updated!');
-            results = [];
+            if (results) {
+                results = [];
+            }
             aggr.results.forEach(function(result) {
                 // each object in result.response.metas is an item that you have to display
                 if (result.response && result.response.metas) {

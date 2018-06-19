@@ -19,6 +19,6 @@ const io = require('socket.io')(server);
 io.on('connection', socket => {
     stremio(server, io);
  })
-// stremio(server);
+stremio(server, io);
 
 server.listen(port, () => console.log('Magic happens on localhost:' + port));
