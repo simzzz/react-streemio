@@ -17,7 +17,7 @@ app.set('port', port);
 const server = http.createServer(app)
 const io = require('socket.io')(server);
 io.on('connection', socket => {
-    stremio(server);
+    stremio(server, io);
  })
 // stremio(server);
 

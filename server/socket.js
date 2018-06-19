@@ -4,9 +4,8 @@ const client = require('stremio-addon-client');
 const officialAddons = require('stremio-official-addons');
 const aggregators = require('stremio-aggregators');
 
-module.exports = function(server) {
+module.exports = function(server, io) {
     const col = new client.AddonCollection()
-    const io = require('socket.io')(server);
 
     let results = [];
     
@@ -19,7 +18,7 @@ module.exports = function(server) {
     aggr.run()
     
     // Just returns the results on each call
-    io.on('connection', socket => {
+    io.once('connection', socket => {
         console.log('User connected');
 
         // We emit once so that there are results when the user connects.
