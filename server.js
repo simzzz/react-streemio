@@ -15,6 +15,10 @@ const port = process.env.PORT || '3000';
 app.set('port', port);
 
 const server = http.createServer(app)
-stremio(server);
+const io = require('socket.io')(server);
+io.on('connection', socket => {
+    stremio(server);
+ })
+// stremio(server);
 
 server.listen(port, () => console.log('Magic happens on localhost:' + port));

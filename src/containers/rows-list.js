@@ -17,6 +17,7 @@ class RowsList extends Component {
 
         // Each time rows are updated, we will call our action creator
         socket.on('rows', (rows) => {
+            console.log(rows)
             this.props.getResults(rows);
         })
     }
