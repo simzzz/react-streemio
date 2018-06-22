@@ -5,7 +5,7 @@ const officialAddons = require('stremio-official-addons');
 const aggregators = require('stremio-aggregators');
 let results = [];
 
-module.exports = function(server, io) {
+module.exports = function(server, io, socket) {
     const col = new client.AddonCollection()
 
     
@@ -18,30 +18,32 @@ module.exports = function(server, io) {
     aggr.run()
     
     // Just returns the results on each call
-    io.once('connection', socket => {
         console.log('User connected');
-
         // We emit once so that there are results when the user connects.
-        io.emit('rows', results);        
-        
+        if (results.length > 0) {
+            io.emit('rows', results);
+        }
+
         aggr.evs.on('updated', () => {
             console.log('Rows were updated!');
-            if (results) {
-                results = [];
-            }
+            
+            let newResults = [];
+        
             aggr.results.forEach(function(result) {
                 // each object in result.response.metas is an item that you have to display
                 if (result.response && result.response.metas) {
-                    results.push(result)
+                    newResults.push(result)
                 }
             })
             
+            if (newResults.length > 0) {
+                results = newResults;
+            }
+
             // Emits again each time the arguments are updated.
             io.emit('rows', results);
         })
         socket.on('disconnect', () => {
             console.log('user disconnected');
         });
-    })
-
 }
