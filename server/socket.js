@@ -3,6 +3,7 @@ const router = express.Router();
 const client = require('stremio-addon-client');
 const officialAddons = require('stremio-official-addons');
 const aggregators = require('stremio-aggregators');
+const _ = require('lodash');
 let results = [];
 
 module.exports = function(server, io, socket) {
@@ -41,7 +42,8 @@ module.exports = function(server, io, socket) {
             }
 
             // Emits again each time the arguments are updated.
-            io.emit('rows', results);
+            const emitRows = _.debounce(() => {io.emit('rows', results)}, 100);
+            emitRows();
         })
         socket.on('disconnect', () => {
             console.log('user disconnected');
